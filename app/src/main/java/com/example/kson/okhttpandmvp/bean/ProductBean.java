@@ -16,6 +16,8 @@ public class ProductBean {
     public class Product{
         public String title;
         public String images;
+        public String pid;
+
     }
 
 }

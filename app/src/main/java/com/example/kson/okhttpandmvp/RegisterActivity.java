@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegView {
 
         Toast.makeText(this, userBean.msg, Toast.LENGTH_SHORT).show();
 
-        startActivity(new Intent(this, RecyclerViewActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
 
     }
 
