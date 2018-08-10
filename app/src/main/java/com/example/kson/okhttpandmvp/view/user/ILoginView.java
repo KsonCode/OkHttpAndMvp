@@ -12,8 +12,12 @@ import com.example.kson.okhttpandmvp.bean.UserBean;
 public interface ILoginView {
 
     void mobileVerify();//校验手机号合法
+
     void mobileEmpty();
+
     void pwdVerify();//校验密码
+
     void success(LoginBean userBean);//请求成功
+
     void failure(String msg);//请求失败
 }

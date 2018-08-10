@@ -2,25 +2,35 @@ package com.example.kson.okhttpandmvp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kson.okhttpandmvp.bean.LoginBean;
+import com.example.kson.okhttpandmvp.common.Api;
 import com.example.kson.okhttpandmvp.presenter.user.LoginPresenter;
+import com.example.kson.okhttpandmvp.utils.OkHttpUtils;
+import com.example.kson.okhttpandmvp.utils.RequestCallback;
 import com.example.kson.okhttpandmvp.view.user.ILoginView;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView{
 
     private EditText mobileEt,pwdEt;
 
     private LoginPresenter loginPresenter;
-    private int REQUEST_CODE = 1;//二维码页面返回的数据请求码
+    private int REQUEST_CODE = 0x1000;//二维码页面返回的数据请求码
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,12 +88,38 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("onstart");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("onrestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("pause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("stop");
+    }
+
+
     /**
      * 二维码扫描
      * @param view
      */
     public void scan(View view) {
         Intent intent = new Intent(LoginActivity.this, CaptureActivity.class);
+//        startActivity(intent);
         startActivityForResult(intent, REQUEST_CODE);
     }
 
@@ -108,5 +144,50 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
                 }
             }
         }
+    }
+
+    /**
+     * 京东，上传头像
+     * @param view
+     */
+    public void upload(View view) {
+        //获取图片资源
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+
+            String filePath = Environment.getDownloadCacheDirectory().getAbsolutePath()+"/kson/hello.jpg";
+            System.out.println("filepath："+filePath);
+
+            File file  = new File(filePath);
+            HashMap<String,Object> params = new HashMap<>();
+            params.put("uid","71");
+            params.put("file",file);
+
+            OkHttpUtils.getInstance().uploadFile(Api.UPLOAD_URL, params, new RequestCallback() {
+                @Override
+                public void failure(Call call, IOException e) {
+
+                }
+
+                @Override
+                public void onResponse(Call call, final Response response) {
+                     runOnUiThread(new Runnable() {
+                         @Override
+                         public void run() {
+                             try {
+                                 Toast.makeText(LoginActivity.this, response.body().string(), Toast.LENGTH_SHORT).show();
+                             } catch (IOException e) {
+                                 e.printStackTrace();
+                             }
+                         }
+                     });
+                }
+            });
+
+
+
+
+
+        }
+
     }
 }
