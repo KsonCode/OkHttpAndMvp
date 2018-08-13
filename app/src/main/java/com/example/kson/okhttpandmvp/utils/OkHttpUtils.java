@@ -4,6 +4,7 @@ import com.example.kson.okhttpandmvp.common.Api;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -179,6 +180,8 @@ public class OkHttpUtils {
                 if (requestCallback != null) {
                     requestCallback.failure(call, e);
                 }
+
+                URLEncoder.encode("url");
 
             }
 

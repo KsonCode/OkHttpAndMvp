@@ -21,9 +21,27 @@ public class RegisterPresenter {
     private IRegView iRegView;
 
     public RegisterPresenter(IRegView iRegView) {
-        this.iRegView = iRegView;
+        onAttach(iRegView);
         this.registerModel = new RegisterModel();
     }
+
+    /**
+     * 绑定view的方法
+     * @param iRegView
+     */
+    public void onAttach(IRegView iRegView){
+        this.iRegView = iRegView;
+    }
+
+    /**
+     * null
+     */
+    public void onDetach(){
+        this.iRegView = null;
+    }
+
+
+
 
     /**
      * 注册逻辑
@@ -84,4 +102,5 @@ public class RegisterPresenter {
 
 
     }
+
 }

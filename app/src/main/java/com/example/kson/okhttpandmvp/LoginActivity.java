@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
     }
 
     private void initData() {
+        getSupportActionBar().hide();//隐藏标题栏
         loginPresenter = new LoginPresenter(this);
     }
 

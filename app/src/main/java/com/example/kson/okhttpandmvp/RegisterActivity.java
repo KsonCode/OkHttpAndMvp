@@ -80,4 +80,12 @@ public class RegisterActivity extends AppCompatActivity implements IRegView {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (presenter!=null){
+
+            presenter.onDetach();
+        }
+    }
 }

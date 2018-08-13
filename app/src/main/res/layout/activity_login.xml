@@ -5,12 +5,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <ImageView
+            android:layout_margin="15dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="登录"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginTop="60dp"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="账号"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="35dp"
+                android:layout_width="match_parent"
+                android:hint="用户名/邮箱/手机号"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/text_999999"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="密码"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/pass_et"
+                    android:layout_toLeftOf="@id/eye_btn"
+                    android:background="@android:color/transparent"
+                    android:layout_marginLeft="35dp"
+                    android:layout_width="match_parent"
+                    android:hint="请输入密码"
+                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/eye_btn"
+                    android:src="@mipmap/eye_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:background="@color/text_999999"
+            android:layout_height="1px"/>
+
+        <TextView
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:background="@drawable/btn_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <EditText
             android:id="@+id/mobile_et"
@@ -26,18 +143,20 @@
             android:inputType="textPassword"/>
 
         <TextView
-
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="login"
+            android:gravity="center"
+            android:padding="10dp"
             android:text="登录"/>
         <TextView
-
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="scan"
             android:text="扫描"/>
         <TextView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="upload"
