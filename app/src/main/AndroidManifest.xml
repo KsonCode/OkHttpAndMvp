@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScanActivity">
+        <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -32,7 +32,7 @@
         </activity>
         <activity android:theme="@style/NoTitleBar" android:name=".LoginActivity" >
         </activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".ScanActivity">
         </activity>
     </application>
 

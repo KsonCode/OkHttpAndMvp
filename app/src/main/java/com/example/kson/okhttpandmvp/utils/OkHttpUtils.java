@@ -18,6 +18,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * Author:kson
@@ -34,9 +35,15 @@ public class OkHttpUtils {
 
     //构造方法私有的？因为不能被调用者new的对象，只能给自己new
     private OkHttpUtils() {
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         okHttpClient = new OkHttpClient.Builder()
-                .writeTimeout(2000, TimeUnit.MICROSECONDS)
+//                .addInterceptor(new MyInterceptor())//添加拦截器
+                .addInterceptor(httpLoggingInterceptor)
+                .writeTimeout(5, TimeUnit.SECONDS)
+                .readTimeout(5, TimeUnit.SECONDS)
+                .connectTimeout(5,TimeUnit.SECONDS)
                 .build();
 
 
@@ -172,7 +179,22 @@ public class OkHttpUtils {
             }
         }
 
-        Request request1 = new Request.Builder().post(builder1.build()).url(url).build();
+        Request request1 = new Request.Builder().addHeader("","").post(builder1.build()).url(url).build();
+
+//        Call call = okHttpClient.newCall(request1);
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//
+//            }
+//        });
+//
+//        call.cancel();
 
         okHttpClient.newCall(request1).enqueue(new Callback() {
             @Override

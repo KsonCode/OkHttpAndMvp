@@ -104,12 +104,12 @@ public class RegisterModel {
                 //2.切换线程，把bean类回调给presenter层
                 if (response.code() == 200) {
                     String result = null;//数据格式json串
-                    try {
-                        result = response.body().string();
-                        parseJsonResult(result, regCallback);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+//                    try {
+//                        result = response.body().string();
+//                        parseJsonResult(result, regCallback);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
                 }
             }
