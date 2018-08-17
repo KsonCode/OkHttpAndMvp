@@ -13,6 +13,17 @@
         android:layout_height="wrap_content"
         android:onClick="requestProduct"
         android:text="请求商品列表"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="add"
+        android:text="添加数据"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="delete"
+        android:text="删除数据"/>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/productRv"

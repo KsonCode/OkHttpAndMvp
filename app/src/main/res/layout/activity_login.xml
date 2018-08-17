@@ -114,6 +114,7 @@
             android:background="@color/text_999999"
             android:layout_height="1px"/>
 
+
         <TextView
             android:layout_margin="15dp"
             android:padding="15dp"

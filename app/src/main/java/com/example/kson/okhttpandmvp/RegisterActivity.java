@@ -11,6 +11,11 @@ import com.example.kson.okhttpandmvp.bean.UserBean;
 import com.example.kson.okhttpandmvp.presenter.user.RegisterPresenter;
 import com.example.kson.okhttpandmvp.view.IRegView;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+
 public class RegisterActivity extends AppCompatActivity implements IRegView {
 
     private EditText mobileEt, pwdEt;
@@ -40,7 +45,20 @@ public class RegisterActivity extends AppCompatActivity implements IRegView {
      * @param view
      */
     public void register(View view) {
+
         presenter.register(mobileEt.getText().toString(), pwdEt.getText().toString());
+
+//        //创建拦截器对象
+//        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+//        //配置日志拦截器
+//        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//
+//        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                .readTimeout(5, TimeUnit.SECONDS)
+//                .addInterceptor(httpLoggingInterceptor)
+//                .build();
+//
+//        okHttpClient
     }
 
     @Override

@@ -27,6 +27,8 @@
         <TextView
             android:gravity="center"
             android:text="注册"
+            android:textColor="#ffffff"
+            android:background="#999999"
             android:padding="10dp"
             android:onClick="register"
             android:layout_width="match_parent"

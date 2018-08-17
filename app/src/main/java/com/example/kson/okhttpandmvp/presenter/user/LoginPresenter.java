@@ -17,9 +17,18 @@ public class LoginPresenter {
     private LoginModel loginModel;
     private ILoginView iLoginView;
 
+    /**
+     * 绑定view的方法
+     */
+    public void attach(ILoginView iLoginView){
+        this.iLoginView = iLoginView;
+
+    }
+
     public LoginPresenter(ILoginView iLoginView) {
         this.loginModel = new LoginModel();
-        this.iLoginView = iLoginView;
+//        this.iLoginView = iLoginView;
+        attach(iLoginView);
     }
 
     public void login(HashMap<String, String> params) {
@@ -35,6 +44,15 @@ public class LoginPresenter {
                 iLoginView.success(userBean);
             }
         });
+
+    }
+
+    /**
+     * 解绑
+     */
+    public void detach(){
+
+        this.iLoginView = null;
 
     }
 }

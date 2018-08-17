@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
         setContentView(R.layout.activity_login);
         initView();
         initData();
+
     }
 
     private void initView() {
@@ -184,11 +185,16 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
                 }
             });
 
-
-
-
-
         }
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (loginPresenter!=null){
+            loginPresenter.detach();
+            loginPresenter = null;
+        }
     }
 }

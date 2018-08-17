@@ -35,6 +35,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     }
 
+    public void add(ProductBean.Product product){
+        this.list.add(0,product);
+//        notifyDataSetChanged();//全部刷新
+        notifyItemInserted(0);
+    }
+
     /**
      * 创建viewholder 和渲染布局
      *
@@ -96,6 +102,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             this.list.addAll(data);
             notifyDataSetChanged();
         }
+    }
+
+    public void delete() {
+        this.list.remove(0);
+        notifyItemRemoved(0);//局部删除
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

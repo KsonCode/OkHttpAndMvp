@@ -13,7 +13,7 @@ public class ProductBean {
     public String code;
     public List<Product> data;
 
-    public class Product{
+    public static class Product{
         public String title;
         public String images;
         public String pid;
